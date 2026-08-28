@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+mlx-lm
+chromadb
+sentence-transformers
+pypdf
+python-docx
+beautifulsoup4
+requests
+watchdog
