@@ -8,6 +8,18 @@ Built for Apple Silicon Macs using [MLX](https://github.com/ml-explore/mlx) for 
 
 ---
 
+## Why LocalMind
+
+The idea started with a simple question: could a useful AI assistant run entirely on hardware I control, without sending private documents to a cloud service or relying on a prepackaged local-model tool? Instead of hiding the moving parts behind a platform, LocalMind was built to make the pipeline visible and understandable: local model inference, document ingestion, chunking, embeddings, vector search, prompt construction, and streamed responses.
+
+This also means owning the infrastructure, retaining full control over where the system runs and how data is handled, and avoiding per-token API costs. After the initial model download, local inference does not require a metered AI service. By default, documents, embeddings, retrieval, and generated responses remain on your laptop, private server, or within your house or building.
+
+## Direction
+
+The long-term goal is a fully local RAG and MCP assistant that runs on your own laptop, workstation, or private server. LocalMind should be able to connect private knowledge and trusted local tools while keeping inference, retrieval, and data under the operator's control. The current project is the foundation for that direction; MCP integration and broader tool connectivity are planned rather than implemented today.
+
+---
+
 ## Features
 
 - **100% local** — LLM inference, embeddings, and vector storage all run on your machine
