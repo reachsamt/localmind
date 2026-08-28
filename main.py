@@ -6,7 +6,7 @@ import requests
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import StreamingResponse, FileResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
@@ -45,7 +45,7 @@ def start_watcher():
 # --- API ---
 class ChatRequest(BaseModel):
     question: str
-    history: list = []
+    history: list = Field(default_factory=list)
 
 
 class IngestUrlRequest(BaseModel):

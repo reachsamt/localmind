@@ -1,5 +1,8 @@
 # local folders/files
 .DS_Store
+chroma_db/
+docs/*
+!docs/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

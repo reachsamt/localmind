@@ -4,6 +4,8 @@ A fully local, privacy-first RAG (Retrieval-Augmented Generation) assistant that
 
 Built for Apple Silicon Macs using [MLX](https://github.com/ml-explore/mlx) for fast on-device LLM inference.
 
+![LocalMind demo](static/localmind-demo.png)
+
 ---
 
 ## Features
@@ -45,7 +47,7 @@ pip install -r requirements.txt
 cp your-file.pdf docs/
 
 # 5. Start the server
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
 Then open [http://localhost:8000](http://localhost:8000) in your browser.
@@ -94,7 +96,7 @@ CHUNK_OVERLAP = 50  # overlap between adjacent chunks
 
 ## Security notes
 
-- The Quickstart binds the server to `0.0.0.0:8000`, meaning anyone on your local network can reach it. There is no authentication on any endpoint. If you want to expose LocalMind beyond `localhost`, put it behind a reverse proxy with auth, or change the bind host to `127.0.0.1`.
+- The Quickstart binds the server to `127.0.0.1:8000`, so it is available only on the local machine. There is no authentication on any endpoint. If you expose LocalMind beyond `localhost`, put it behind a reverse proxy with auth.
 - `POST /ingest/url` fetches whatever URL you give it from the machine running the server. It refuses to fetch internal/private/loopback addresses (e.g. `localhost`, `169.254.169.254`, RFC1918 ranges) to reduce SSRF risk, but treat this endpoint as trusted-input-only — don't expose it to untrusted users.
 
 ---
@@ -106,6 +108,13 @@ curl -X POST http://localhost:8000/ingest/url \
      -H "Content-Type: application/json" \
      -d '{"url": "https://example.com/page"}'
 ```
+
+## Known limitations
+
+- Requires an Apple Silicon Mac for MLX inference.
+- The first launch downloads the selected model, which is several GB.
+- The local server has no built-in authentication.
+- There are currently no automated tests; validate changes on a machine with the project dependencies installed.
 
 ---
 
