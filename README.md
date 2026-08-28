@@ -78,6 +78,8 @@ LLM_MODEL = "mlx-community/Qwen2.5-14B-Instruct-4bit"  # ~9 GB
 # LLM_MODEL = "mlx-community/Qwen2.5-7B-Instruct-4bit"  # ~5 GB
 ```
 
+On first launch, `mlx-lm` downloads the selected model from [Hugging Face](https://huggingface.co/mlx-community/Qwen2.5-14B-Instruct-4bit) and caches it locally. The default model download is approximately 9 GB; later launches reuse the local cache.
+
 **Retrieval (`rag.py`)**
 
 ```python
