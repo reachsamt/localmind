@@ -14,7 +14,7 @@ Built for Apple Silicon Macs using [MLX](https://github.com/ml-explore/mlx) for 
 - **Document chat** — ingest PDFs, Word docs, plain text, and HTML pages
 - **Live document watching** — drop a file into `docs/` and it's indexed automatically
 - **Streaming responses** — see the answer as it's generated, token by token
-- **General knowledge fallback** — asks outside your documents are answered from the model's own knowledge
+- **General knowledge fallback** — asks outside your documents are answered from the model's own knowledge (knowledge cutoff: June 2024)
 - **Conversation history** — maintains context across follow-up questions
 - **Web UI** — clean chat interface served at `localhost:8000`
 
@@ -80,6 +80,8 @@ LLM_MODEL = "mlx-community/Qwen2.5-14B-Instruct-4bit"  # ~9 GB
 
 On first launch, `mlx-lm` downloads the selected model from [Hugging Face](https://huggingface.co/mlx-community/Qwen2.5-14B-Instruct-4bit) and caches it locally. The default model download is approximately 9 GB; later launches reuse the local cache.
 
+The Qwen2.5 model has a knowledge cutoff of June 2024. It has no built-in tools, live browsing, or internet access, and LocalMind does not provide autonomous internet tools to the model. The optional `/ingest/url` endpoint only fetches a URL when you explicitly request ingestion; its content is then stored as local document context.
+
 **Retrieval (`rag.py`)**
 
 ```python
@@ -115,6 +117,8 @@ curl -X POST http://localhost:8000/ingest/url \
 
 - Requires an Apple Silicon Mac for MLX inference.
 - The first launch downloads the selected model, which is several GB.
+- Model answers may not reflect events or information published after June 2024.
+- The model cannot browse the web or call external tools. URL ingestion is a separate, user-triggered feature.
 - The local server has no built-in authentication.
 - There are currently no automated tests; validate changes on a machine with the project dependencies installed.
 
