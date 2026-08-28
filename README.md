@@ -6,6 +6,8 @@ Built for Apple Silicon Macs using [MLX](https://github.com/ml-explore/mlx) for 
 
 ![LocalMind demo](static/localmind-demo.png)
 
+**Keywords:** local AI, private AI, RAG, retrieval-augmented generation, document chat, Apple Silicon, MLX, embeddings, vector search, offline AI
+
 ---
 
 ## Why LocalMind
